@@ -1,14 +1,10 @@
 #!/usr/bin/env node
 import * as cdk from "@aws-cdk/core";
-import { CdkWorkshopStackApiGatewayAndLambda } from "../lib/cdk-workshop-stack-apigateway-lambda";
-import { CdkWorkshopStackSnsAndSqs } from "../lib/cdk-workshop-stack-sns-sqs";
-import { CdkWorkshopStackTypescriptLambda } from "../lib/cdk-workshop-stack-ts-lambda";
+import { CdkWorkshopStackSimpleLambda } from "../lib/cdk-workshop-stack-simple-lambda";
 
 const app = new cdk.App();
 
-new CdkWorkshopStackApiGatewayAndLambda(
+new CdkWorkshopStackSimpleLambda(
   app,
-  "CdkWorkshopStackApiGatewayLambda"
+  "CdkWorkshopStackSimpleLambda"
 );
-new CdkWorkshopStackTypescriptLambda(app, "CdkWorkshopStackTypescriptLambda");
-new CdkWorkshopStackSnsAndSqs(app, "CdkWorkshopStackSnsSqs");

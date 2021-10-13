@@ -1,41 +1,25 @@
-# CDK Sample (TypeScript)
+# CDK Lambda Sample
 
-## CDKの始め方
+Lambda (Python) を CDK を使ってデプロイする。  
+CDK のコードは TypeScript。
 
-このプロジェクトは、[CDKのTYPESCRIPT ワークショップ](https://summit-online-japan-cdk.workshop.aws/20-typescript.html)で作成した。
+## 始め方
 
-```sh
-> npm install -g aws-cdk
-> mkdir cdk-workshop && cd cdk-workshop
-> cdk init sample-app --language typescript
-```
-
-このプロジェクトを`git clone`して始める場合
+### 準備
 
 ```sh
-> npm install
+git clone git@github.com:mozkzki/cdk-lambda-simple.git
+cd cdk-lambda-simple
+npm install
+# tsc を watch モードで起動
+npm run watch
 ```
 
-### tscをwatchモードで起動
+#### `npm run watch`について
 
-```sh
-> cd cdk-workshop
-> npm run watch
-```
-
-- TypeScriptコンパイラ（tsc）が"watch"モードで起動する
-- .tsファイルを変更すると自動的に.jsへコンパイルされる
-- **これをやらないと以下に示す`cdk deploy`や`cdk diff`等は失敗する**
-
-### テンプレート生成
-
-`cdk.json`がある場所で以下を実行。
-
-```sh
-cdk synth
-```
-
-- CDKアプリのコード(`lib/cdk-workshop-stack*.ts`)からテンプレートが生成される(CDK用語で"synthesize")
+- **これをやらないと後述の`cdk deploy`や`cdk diff`等は失敗する**
+- TypeScript コンパイラ(tsc)が watch モードで起動する
+- .ts ファイルを変更すると自動的に.js へトランスパイルしてくれる
 
 ### 環境の初期構築
 
@@ -53,18 +37,39 @@ cdk bootstrap
 cdk deploy
 ```
 
-### 差分の確認
-
-```sh
-cdk diff
-```
-
 ### 削除
 
 スタックを削除。
 
 ```sh
 cdk destroy
+```
+
+## その他の操作
+
+### テンプレート生成
+
+- `cdk.json`がある場所で以下を実行。
+- CDK アプリのコード(`lib/cdk-workshop-stack*.ts`)からテンプレートが生成される(CDK 用語で"synthesize")
+
+```sh
+cdk synth
+```
+
+### 差分の確認
+
+```sh
+cdk diff
+```
+
+## CDK の始め方
+
+このプロジェクトは、[CDK の TYPESCRIPT ワークショップ](https://summit-online-japan-cdk.workshop.aws/20-typescript.html)で作成した。
+
+```sh
+npm install -g aws-cdk
+mkdir cdk-workshop && cd cdk-workshop
+cdk init sample-app --language typescript
 ```
 
 ## Reference
@@ -74,9 +79,9 @@ cdk destroy
 
 ## Useful commands
 
-- `npm run build`   compile typescript to js
-- `npm run watch`   watch for changes and compile
-- `npm run test`    perform the jest unit tests
-- `cdk deploy`      deploy this stack to your default AWS account/region
-- `cdk diff`        compare deployed stack with current state
-- `cdk synth`       emits the synthesized CloudFormation template
+- `npm run build` compile typescript to js
+- `npm run watch` watch for changes and compile
+- `npm run test` perform the jest unit tests
+- `cdk deploy` deploy this stack to your default AWS account/region
+- `cdk diff` compare deployed stack with current state
+- `cdk synth` emits the synthesized CloudFormation template
