@@ -1,7 +1,11 @@
 # CDK Lambda Sample
 
-Lambda (Python) を CDK を使ってデプロイする。  
-CDK のコードは TypeScript。
+Lambda (Python) を CDK を使ってデプロイする。
+
+- CDK のコードは TypeScript
+- 依存ライブラリ(`Chronyk`)を使用
+- 依存ライブラリは Lambda Layer で配置(コードサイズ抑制)
+- メインコード(`index.py`)をコンソール上で編集可能
 
 ## 始め方
 
