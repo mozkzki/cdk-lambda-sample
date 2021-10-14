@@ -41,6 +41,15 @@ cdk bootstrap
 cdk deploy
 ```
 
+### 実行
+
+```sh
+aws lambda invoke --function-name foo response.json --log-type Tail --query 'LogResult' --output text | base64 -d
+# or
+# cdk.jsonがある場所で
+make start
+```
+
 ### 削除
 
 スタックを削除。
@@ -75,6 +84,10 @@ npm install -g aws-cdk
 mkdir cdk-workshop && cd cdk-workshop
 cdk init sample-app --language typescript
 ```
+
+## Python コードの開発
+
+`lambda`ディレクトリ以下で開発する。
 
 ## Reference
 

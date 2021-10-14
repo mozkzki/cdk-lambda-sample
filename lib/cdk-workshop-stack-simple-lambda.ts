@@ -11,21 +11,24 @@ export class CdkWorkshopStackSimpleLambda extends cdk.Stack {
     // Python lambda
     ////////////////////////////
 
-    const layer = new lambdapython.PythonLayerVersion(this, 'python-lambda-layer', {
-        layerVersionName: 'python-lambda-layer',
-        entry: path.resolve(__dirname, '../lambda/layer'),
-        compatibleRuntimes: [ lambda.Runtime.PYTHON_3_7 ]
-    })
+    const layer = new lambdapython.PythonLayerVersion(
+      this,
+      "python-lambda-layer",
+      {
+        layerVersionName: "python-lambda-layer",
+        entry: path.resolve(__dirname, "../lambda/layer"),
+        compatibleRuntimes: [lambda.Runtime.PYTHON_3_7],
+      }
+    );
 
     const fnFoo = new lambdapython.PythonFunction(this, "fn-foo", {
-        functionName: "foo",
-        runtime: lambda.Runtime.PYTHON_3_7,
-        entry: path.resolve(__dirname, "../lambda/foo"),
-        index: "index.py",
-        handler: "handler",
-        layers: [ layer ],
+      functionName: "foo",
+      runtime: lambda.Runtime.PYTHON_3_7,
+      entry: path.resolve(__dirname, "../lambda/src/foo"),
+      index: "index.py",
+      handler: "handler",
+      layers: [layer],
     });
     cdk.Tags.of(fnFoo).add("runtime", "python");
-
   }
 }
