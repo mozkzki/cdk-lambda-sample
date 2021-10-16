@@ -1,5 +1,7 @@
 # CDK Lambda Sample
 
+**(注): M1 Mac (Appleシリコン) では Docker 周りがだめで`cdk deploy`等がうまく動かない**
+
 Lambda (Python) を CDK を使ってデプロイする。
 
 - CDK のコードは TypeScript
