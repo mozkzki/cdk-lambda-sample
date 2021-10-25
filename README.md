@@ -1,7 +1,5 @@
 # CDK Lambda Sample
 
-**(注): M1 Mac (Appleシリコン) では Docker 周りがだめで`cdk deploy`等がうまく動かない**
-
 Lambda (Python) を CDK を使ってデプロイする。
 
 - CDK のコードは TypeScript
@@ -46,10 +44,18 @@ cdk deploy
 ### 実行
 
 ```sh
-aws lambda invoke --function-name foo response.json --log-type Tail --query 'LogResult' --output text | base64 -d
+aws lambda invoke --no-cli-auto-prompt --function-name foo response.json --log-type Tail --query 'LogResult' --output text | base64 -d
 # or
 # cdk.jsonがある場所で
 make start
+```
+
+### テスト
+
+CDKコードのテスト。
+
+```sh
+make test
 ```
 
 ### 削除
@@ -90,6 +96,14 @@ cdk init sample-app --language typescript
 ## Python コードの開発
 
 `lambda`ディレクトリ以下で開発する。
+
+```sh
+cd lambda
+# lint
+make lint
+# unit test
+make ut
+```
 
 ## Reference
 

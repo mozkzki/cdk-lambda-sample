@@ -1,7 +1,7 @@
-.PHONY: ut start
+.PHONY: test start
 
-ut:
+test:
 	npm run test
 
 start:
-	aws lambda invoke --function-name foo response.json --log-type Tail --query 'LogResult' --output text | base64 -d
+	aws lambda invoke --no-cli-auto-prompt --function-name foo response.json --log-type Tail --query 'LogResult' --output text | base64 -d
